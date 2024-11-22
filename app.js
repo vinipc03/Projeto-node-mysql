@@ -14,6 +14,9 @@ const app = express();
 // Adicionar boostrap
 app.use('/bootstrap', express.static('./node_modules/bootstrap/dist'));
 
+// Adicionar CSS
+app.use('/css', express.static('./css'));
+
 // Configuração do express-handlebars
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
