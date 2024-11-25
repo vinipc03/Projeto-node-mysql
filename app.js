@@ -22,6 +22,10 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+// Manipulação de dados via rotas
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+
 // configuração de conexão
 const conexao = mysql.createConnection({
    host: 'localhost',
@@ -40,6 +44,12 @@ conexao.connect(function(erro){
 app.get('/', function(req, res){
     res.render('formulario');
 });
+
+// Rota de cadastro
+app.post('/cadastrar', function(req, res){
+    console.log(req.body);
+    res.end();
+})
 
 // Servidor
 app.listen(8080);
